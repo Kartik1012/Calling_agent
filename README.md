@@ -80,3 +80,5 @@ SELECT text, url FROM my_table WHERE text LIKE '%employee%'
 teleprompter = BootstrapFewShot(metric="execution_accuracy")  # or exact_match
 optimized_sql_gen = teleprompter.compile(SQLPoTGenerator(), trainset)
 
+https://colab.research.google.com/drive/1LtsJjPofGZXfYRMrRtIQEQ_AVh0i3Ncq?usp=sharing
+
