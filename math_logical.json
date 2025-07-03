@@ -1,0 +1,77 @@
+{
+  "prog.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "question": "My mother celebrated her birthday with a total of 60 guests. Half of the guests are women, 15 are men, and the rest are children. In the middle of the celebration, 1\/3 of the men and 5 children left. How many people stayed and enjoyed the birthday celebration?",
+        "reasoning": "To find out how many people stayed at the birthday celebration, we first need to determine the number of children. Since there are 60 guests in total, and half are women, that means there are 30 women. Given that there are 15 men, we can calculate the number of children as follows:\n\nTotal guests = Women + Men + Children  \n60 = 30 + 15 + Children  \nChildren = 60 - 30 - 15 = 15\n\nNext, we calculate how many men left the celebration. One-third of the 15 men left, which is:\n\nMen left = 1\/3 * 15 = 5\n\nAfter that, we know that 5 children also left. Therefore, the total number of people who left is:\n\nTotal left = Men left + Children left = 5 + 5 = 10\n\nNow, we can find out how many people stayed:\n\nTotal stayed = Total guests - Total left = 60 - 10 = 50",
+        "answer": "50"
+      },
+      {
+        "augmented": true,
+        "question": "Tony has a terrible toothache and decides to buy some painkillers from the store.  He picks up a bottle of 50 pills and takes them home.  He takes 2 pills each day three times a day for the first 2 days, before cutting this amount in half for the next 3 days.  On the sixth day, he takes a final 2 pills in the morning and ends up feeling better.  How many pills are left in the bottle?",
+        "reasoning": "Tony starts with a bottle of 50 pills. For the first 2 days, he takes 2 pills three times a day, which totals to 2 * 3 * 2 = 12 pills. For the next 3 days, he cuts his intake in half, taking 1 pill three times a day, which totals to 1 * 3 * 3 = 9 pills. On the sixth day, he takes 2 more pills. \n\nNow, we can calculate the total number of pills he has taken:\n- First 2 days: 12 pills\n- Next 3 days: 9 pills\n- Sixth day: 2 pills\n\nTotal pills taken = 12 + 9 + 2 = 23 pills.\n\nNow, subtract the total pills taken from the original amount:\n50 - 23 = 27 pills left in the bottle.",
+        "answer": "27"
+      },
+      {
+        "augmented": true,
+        "question": "Billy is breeding mice for an experiment. He starts with 8 mice, who each have 6 pups. When the pups grow up, all the mice have another 6 pups. Then each adult mouse eats 2 of their pups due to the stress of overcrowding. How many mice are left?",
+        "reasoning": "Billy starts with 8 mice. Each of these mice has 6 pups, so the total number of pups from the first generation is 8 * 6 = 48 pups. After the pups grow up, there are now 8 adult mice and 48 grown pups, making a total of 56 adult mice. Each of these 56 adult mice then has another 6 pups, resulting in 56 * 6 = 336 new pups. Now, there are 56 adult mice and 336 pups, totaling 392 mice. However, due to overcrowding, each adult mouse eats 2 of their pups. Since there are 56 adult mice, they eat a total of 56 * 2 = 112 pups. Therefore, the total number of mice left is 392 - 112 = 280 mice.",
+        "answer": "280"
+      },
+      {
+        "augmented": true,
+        "question": "A store gives a 10% discount for the amount of the sell that was over $1000.  John buys 7 items that each cost $200.  What does his order cost after the discount?",
+        "reasoning": "John buys 7 items at $200 each, so the total cost before any discount is 7 * 200 = $1400. Since this amount is over $1000, he qualifies for a 10% discount on the amount over $1000. The amount over $1000 is $1400 - $1000 = $400. The discount on this amount is 10% of $400, which is $40. Therefore, the total cost after the discount is $1400 - $40 = $1360.",
+        "answer": "1360"
+      },
+      {
+        "question": "On a weekend road trip, the Jensen family drove 210 miles on highways, where their car gets 35 miles for each gallon of gas and 54 miles on city streets where their car gets 18 miles for each gallon. How many gallons of gas did they use?",
+        "gold_reasoning": "On highways, the Jensen family used 210 miles \/ 35 miles\/gallon = <<210\/35=6>>6 gallons of gas. On city streets, the Jensen family used 54 miles \/ 18 miles\/gallon = <<54\/18=3>>3 gallons of gas. Total, the Jensen family used 6 gallons + 3 gallons = <<6+3=9>>9 gallons of gas.",
+        "answer": "9"
+      },
+      {
+        "question": "Mirasol had $50 in her account. She spent $10 on coffee beans and $30 on a tumbler. How much is left in her account?",
+        "gold_reasoning": "Mirasol spent a total of $30 + $10 = $<<30+10=40>>40. Thus, Mirasol has $50 - $40 = $<<50-40=10>>10 left in her account.",
+        "answer": "10"
+      },
+      {
+        "question": "Ariana is past due on three bills. The first bill for $200 charges 10% simple interest for each overdue month and it's 2 months overdue. The second bill for $130 charges a flat $50 late fee per month and is 6 months overdue. The last bill is two months late and charges a $40 fee the first month overdue and twice that fee the second month overdue and is for $444. How much does Ariana owe in total?",
+        "gold_reasoning": "First find the monthly late fee for the first bill: $200 * 10% = $<<200*10*.01=20>>20 Then multiply that by the number of months the bill is overdue: $20\/month * 2 months = $<<20*2=40>>40 Then find the total late fee for the second bill the same way: $50\/month * 6 months = $<<50*6=300>>300 Then find the third bill's second late fee: 2 * $40 = $<<2*40=80>>80 Then add all the bill amounts and late fees to find the total cost: $40 + $200 + $300 + $130 + $40 + $80 + $444 = $<<40+200+300+130+40+80+444=1234>>1234",
+        "answer": "1234"
+      },
+      {
+        "question": "A rancher has 340 head of cattle. He was about to sell them all for $204,000 when 172 of them fell sick and died. Because of the sickness, his customers lost confidence in his cattle, forcing him to lower his price by $150 per head. How much money would the devastated farmer lose if he sold the remaining cattle at the lowered price compared to the amount he would have made by selling them at the original price?",
+        "gold_reasoning": "The rancher would have sold his cattle for $204,000\/340 = $<<204000\/340=600>>600 per head. He was left with a remainder of 340 - 172 = <<340-172=168>>168 head of cattle. The lowered price is $600 - $150 = $<<600-150=450>>450 per head. He would make $450 x 168 = $<<450*168=75600>>75,600 at the lowered price. He could have made $600 x 168 = $<<600*168=100800>>100,800 at the original price. He would lose $100,800 - $75,600 = $<<100800-75600=25200>>25,200",
+        "answer": "25200"
+      }
+    ],
+    "signature": {
+      "instructions": "Given the fields `question`, produce the fields `answer`.",
+      "fields": [
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning: Let's think step by step in order to",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "${answer}"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.11",
+      "dspy": "2.6.27",
+      "cloudpickle": "3.1"
+    }
+  }
+}
