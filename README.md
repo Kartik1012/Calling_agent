@@ -83,3 +83,64 @@ optimized_sql_gen = teleprompter.compile(SQLPoTGenerator(), trainset)
 
 https://colab.research.google.com/drive/1LtsJjPofGZXfYRMrRtIQEQ_AVh0i3Ncq?usp=sharing
 
+
+import fitz  # PyMuPDF
+import os
+from PIL import Image
+import openai
+
+openai.api_key = "YOUR_OPENAI_API_KEY"  # Replace with your API key
+
+def pdf_to_images(pdf_path, image_folder="pdf_images"):
+    os.makedirs(image_folder, exist_ok=True)
+    doc = fitz.open(pdf_path)
+    image_paths = []
+
+    for page_num in range(len(doc)):
+        page = doc.load_page(page_num)
+        pix = page.get_pixmap(dpi=200)
+        image_path = os.path.join(image_folder, f"page_{page_num + 1}.png")
+        pix.save(image_path)
+        image_paths.append(image_path)
+
+    doc.close()
+    return image_paths
+
+def summarize_image(image_path):
+    with open(image_path, "rb") as img_file:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "user", "content": [
+                    {"type": "text", "text": "Summarize the content of this PDF page."},
+                    {"type": "image_url", "image_url": {"url": "data:image/png;base64," + img_file.read().encode('base64').decode('utf-8')}}
+                ]}
+            ],
+            temperature=0.5,
+        )
+    return response["choices"][0]["message"]["content"]
+
+def delete_images(image_paths):
+    for path in image_paths:
+        os.remove(path)
+    os.rmdir(os.path.dirname(image_paths[0]))
+
+def summarize_pdf(pdf_path):
+    print(f"Processing PDF: {pdf_path}")
+    image_paths = pdf_to_images(pdf_path)
+    
+    full_summary = []
+    for image_path in image_paths:
+        print(f"Summarizing {image_path} ...")
+        summary = summarize_image(image_path)
+        full_summary.append(f"\n--- Page {image_paths.index(image_path) + 1} ---\n{summary}")
+
+    delete_images(image_paths)
+    return "\n".join(full_summary)
+
+# Example usage
+if _name_ == "_main_":
+    pdf_file = "example.pdf"  # 🔁 Replace with your PDF path
+    final_summary = summarize_pdf(pdf_file)
+    print("\n📘 Final Summary of PDF:\n", final_summary)
+
