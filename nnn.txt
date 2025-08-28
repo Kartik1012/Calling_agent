@@ -1,0 +1,75 @@
+Recall measures how well the retrieved context supports the given answer(ground truth ).so ir needed GT , C_i
+Example 1.
+Prompt: What is the chemical formula for water and what are different elements in it?
+
+Expected Response: The chemical formula for water is H2O and it is composed of two elements: hydrogen and oxygen.
+
+Context: [‘Water is essential for all known forms of life and is a major component of the Earth's hydrosphere.’,‘Water chemical formula is H2O.’, ‘The chemical formula for carbon dioxide is CO2, which is a greenhouse gas.’]
+
+Metric Output: {‘score’:0.5, ‘reason’:‘’context does not contain any information about the elements of water’}
+
+Example 2.
+user_input="Where is the Eiffel Tower located?",
+    response="The Eiffel Tower is located in Paris.",
+    reference="The Eiffel Tower is located in Paris.",
+    retrieved_contexts=["Paris is the capital of France."],
+
+Example 3.
+data_samples = {
+    'question': ['When was the first super bowl?', 'Who won the most super bowls?'],
+    'answer': ['The first superbowl was held on Jan 15, 1967', 'The most super bowls have been won by The New England Patriots'],
+    'contexts' : [['The First AFL–NFL World Championship Game was an American football game played on January 15, 1967, at the Los Angeles Memorial Coliseum in Los Angeles,'], 
+    ['The Green Bay Packers...Green Bay, Wisconsin.','The Packers compete...Football Conference']],
+    'ground_truth': ['The first superbowl was held on January 15, 1967', 'The New England Patriots have won the Super Bowl a record six times']
+}
+
+Example 4.
+📝 User’s Question:
+“Who discovered penicillin?”
+
+📖 Ground Truth Answer (Reference Answer):
+“Alexander Fleming discovered penicillin in 1928.”
+
+📚 Retrieved Contexts:
+🔹 Context 1:
+“Alexander Fleming, a Scottish bacteriologist, accidentally discovered penicillin in 1928 when he noticed that mold killed bacteria on a petri dish.” ✅ (Useful for answering the question)
+
+🔹 Context 2:
+“Penicillin is an antibiotic that revolutionized medicine by treating bacterial infections effectively. It was widely used during World War II.” ❌ (Does not mention Fleming or discovery)
+
+🔹 Context 3:
+“The discovery of antibiotics led to a significant reduction in mortality from bacterial infections in the 20th century.” ❌ (Too general, does not specify penicillin or its discovery)
+score 
+
+Q: "Who discovered penicillin and when?"
+GT Claims:
+
+Alexander Fleming discovered penicillin
+
+In 1928
+Retrieved Contexts:
+
+"Alexander Fleming discovered penicillin in 1928."
+Recall: 2/2 = 1.0
+
+Example 5.
+Q: "What contributions did Isaac Newton make?"
+GT Claims:
+
+Formulated laws of motion
+
+Developed calculus
+
+Explained gravity via universal gravitation
+
+Contributed to optics and light refraction
+Retrieved Contexts:
+
+Laws of motion (yes)
+
+Calculus (yes)
+
+Gravity (yes)
+
+No mention of optics
+Recall: 3/4 = 0.75
